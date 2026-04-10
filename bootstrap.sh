@@ -52,7 +52,7 @@ while [ ! -d "$USERDATA_DIR" ]; do
             SELECTED_REPO="$GH_USER/$REPO_NAME"
             
             # Prevent users from selecting the engine repo itself
-            if [ "$REPO_NAME" == "AIandI" ] || [ "$REPO_NAME" == "homelab_sop" ]; then
+            if [ "$REPO_NAME" == "AIandI" ]; then
                 echo "❌ Error: You selected the public 'AIandI' engine repo, which contains no data."
                 echo "Please select your PRIVATE userdata repository."
                 break

@@ -39,7 +39,7 @@ This is the high-level cognitive layer. It tracks the lifecycle of your thoughts
 - **`02-ideas/` 💡**: The incubator. Brainstorming, project proposals, and concepts being explored with AI.
 - **`03-research/` 🔬**: Deep dives. Technical research, evaluations of new tools, and reading notes.
 - **`10-projects/` 🚀**: Active execution. Source code for active applications, scripts, or focused engineering tasks with a defined end goal. *(This is the ultimate intersection point where human intent meets machine code).*
-- **`20-areas/` 🌐**: Ongoing responsibilities. Long-term maintenance domains (e.g., HomeLab architecture, finance, health).
+- **`20-areas/` 🌐**: Ongoing responsibilities. Long-term maintenance domains (e.g., architecture, finance, health).
 - **`30-resources/` 📚**: The library. Reusable assets, templates, standard operating procedures (SOPs), and shared scripts.
 - **`40-archives/` 🗄️**: Cold storage. Completed projects, abandoned ideas, and outdated documents.
 
