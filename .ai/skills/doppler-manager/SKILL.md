@@ -51,9 +51,11 @@ If you need to execute a command that requires secrets from ANY project *other* 
 
 ### 2. Secret Management (Human-in-the-Loop)
 
-AI Agents **SHOULD NOT** attempt to read, add, or delete secrets directly using `doppler secrets` commands. Secret configuration is manually managed by the human user.
-- If a new secret is needed for a script the AI wrote, the AI must ask the user to add it to Doppler via the Web UI or their local CLI.
-- The AI assumes the secret exists once the user confirms it.
+AI Agents **SHOULD NOT** attempt to read, add, or delete secrets directly using `doppler secrets` commands. Secret configuration is manually managed by the human user to maintain the zero-knowledge boundary.
+- If a new secret is needed for a script the AI wrote, or an existing secret needs modification, the AI must ask the user to perform the action.
+- **Crucial:** When prompting the user to manage a secret, the AI MUST provide the exact, copy-pasteable `doppler secrets` CLI command for the user to run in their terminal, rather than just telling them to use the Web UI.
+  - Example prompt to user: "I need a new secret `DATABASE_URL` in the `keys4_private-services` project. Please run this command to add it: `doppler secrets set DATABASE_URL="<your_value>" -p keys4_private-services -c stg`"
+- The AI assumes the secret exists once the user confirms they have run the command.
 
 ### 3. Secure Execution (The AI's Primary Role)
 
