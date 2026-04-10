@@ -40,28 +40,28 @@ The `AIandI` workspace strictly isolates secrets across 9 domains (blast radii).
 8. `keys4_notification-channels` (Telegram bots, Webhooks)
 9. `keys4_delivery-pipelines` (Docker Hub, NPM)
 
-**The JITA Workflow (User Consent):**
-If you need to read or modify a secret in ANY project *other* than `keys4_token-providers`:
+**The JITA Workflow (User Consent & Zero-Knowledge Injection):**
+AI Agents DO NOT read, print, or directly manage the raw contents of secrets. The Doppler cloud stores them; the human configures them. The AI's role is to orchestrate tasks by injecting secrets into subprocesses via `doppler run`.
+
+If you need to execute a command that requires secrets from ANY project *other* than `keys4_token-providers`:
 1. Identify the target project from the 9-grid list above.
 2. USE THE `ask_user` TOOL (type: `yesno` or `choice`) to explicitly request permission from the human.
-   - Example prompt: "I need to access/modify secrets in the `[project_name]` project to complete this task. Do you authorize this action?"
-3. Only if the user explicitly grants permission, you may proceed to use `doppler secrets` or `doppler run` with the `-p [project_name] -c stg` flags.
+   - Example prompt: "I need to inject secrets from the `[project_name]` project to execute this command. Do you authorize this action?"
+3. Only if the user explicitly grants permission, you may proceed to use `doppler run -p [project_name] -c stg -- <command>`.
 
-### 2. Secret Management
+### 2. Secret Management (Human-in-the-Loop)
 
-Manage secrets within a specific project and config using the `--project` (`-p`) and `--config` (`-c`) flags.
+AI Agents **SHOULD NOT** attempt to read, add, or delete secrets directly using `doppler secrets` commands. Secret configuration is manually managed by the human user.
+- If a new secret is needed for a script the AI wrote, the AI must ask the user to add it to Doppler via the Web UI or their local CLI.
+- The AI assumes the secret exists once the user confirms it.
 
-- **List Secrets**: `doppler secrets -p <project> -c <config>`
-- **Add/Update Secret**: `doppler secrets set KEY=VALUE -p <project> -c <config>`
-- **Delete Secret**: `doppler secrets delete KEY -p <project> -c <config>`
+### 3. Secure Execution (The AI's Primary Role)
 
-### 3. Secure Execution
+The primary duty of the AI is to inject secrets directly into the application's or script's memory using Doppler, ensuring zero secrets are leaked to disk or logs.
 
-Inject secrets directly into the application's memory without using `.env` files.
-
-- **Run Command**: `doppler run -- <command>`
-- **Example**: `doppler run -- python3 main.py`
-- **Docker Compose**: `doppler run -- docker compose up -d`
+- **Run Command**: `doppler run -p <project> -c <config> -- <command>`
+- **Example**: `doppler run -p keys4_private-services -c stg -- python3 main.py`
+- **Docker Compose**: `doppler run -p keys4_network-core -c stg -- docker compose up -d`
 
 ## Reference Documentation
 
