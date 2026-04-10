@@ -12,29 +12,29 @@ No matter how advanced AI becomes, as humans, we will always have work to do. At
 
 ---
 
-## 🗂️ Repository Taxonomy: Information Granularity & Dimensions
+## 🗂️ Repository Taxonomy: The Symbiosis of "Blueprint" and "Workshop"
 
-To accommodate our philosophy of deep human-AI collaboration, the repository is split into two distinct dimensions of information granularity: **The Human Dimension** (cognitive and lifecycle management) and **The Machine Dimension** (execution and context).
+To accommodate our philosophy of deep human-AI collaboration, the repository organizes information across two highly intertwined dimensions. They are not isolated silos, but rather a dynamic ecosystem where human cognition (The Blueprint) continuously flows into and is shaped by machine execution (The Workshop).
 
 ### 1. The Human Dimension (Numbered P.A.R.A. Folders)
 
-This is the high-level cognitive layer. It tracks the lifecycle of your thoughts, knowledge, and active goals.
+This is the high-level cognitive layer. It tracks the lifecycle of your thoughts, knowledge, and active goals—from chaos to clarity.
 
 - **`00-inbox/` 📥**: The raw intake. Transient landing zone for quick captures and unstructured thoughts.
 - **`01-raw/` 🥩**: The immutable source of truth (Karpathy's LLM Wiki concept). A permanent, read-only data lake for original articles, research papers, logs, and unedited notes. The AI compiles structured knowledge from here but NEVER modifies these files.
 - **`02-ideas/` 💡**: The incubator. Brainstorming, project proposals, and concepts being explored with AI.
 - **`03-research/` 🔬**: Deep dives. Technical research, evaluations of new tools, and reading notes.
-- **`10-projects/` 🚀**: Active execution. Source code for active applications, scripts, or focused engineering tasks with a defined end goal.
+- **`10-projects/` 🚀**: Active execution. Source code for active applications, scripts, or focused engineering tasks with a defined end goal. *(This is the ultimate intersection point where human intent meets machine code).*
 - **`20-areas/` 🌐**: Ongoing responsibilities. Long-term maintenance domains (e.g., HomeLab architecture, finance, health).
 - **`30-resources/` 📚**: The library. Reusable assets, templates, standard operating procedures (SOPs), and shared scripts.
 - **`40-archives/` 🗄️**: Cold storage. Completed projects, abandoned ideas, and outdated documents.
 
 ### 2. The Machine Dimension (Unnumbered Folders)
 
-This is the granular execution and context layer. It contains the scripts, automation pipelines, and infrastructure definitions where the AI (and the DevOps engineer) operates.
+This is the granular execution and context layer. Think of these as "permanent super-projects" that enforce system conventions and provide the "hands" for AI and DevOps operations. 
 
-- **`.ai/` 🧠**: The AI's context engine. Contains custom system instructions, prompt templates, and specialized agent **skills** (e.g., `.ai/skills/doppler-manager`).
-- **`infrastructure/` ⚙️**: The GitOps engine. Declarative Infrastructure as Code (IaC) and the original Agentic Operations Center (see `infrastructure/README.md`).
+- **`.ai/` 🧠**: The AI's context engine. Contains custom system instructions, prompt templates, and specialized agent **skills** (e.g., `.ai/skills/doppler-manager`). *Insights gained from debugging skills here are often distilled into SOPs and moved up to `30-resources/`.*
+- **`infrastructure/` ⚙️**: The GitOps engine. Declarative Infrastructure as Code (IaC) and the original Agentic Operations Center (see `infrastructure/README.md`). *The physical manifestation of the strategic decisions made in `03-research/`.*
 - **`.github/` 🐙**: Automation pipelines and CI/CD workflows.
 
 ---
