@@ -13,10 +13,23 @@ sudo apt-get update || true
 sudo apt-get install -y doppler
 
 # 2. Install AI Copilot Tools
-echo "🧠 Installing AI Copilot Tools (@google/gemini-cli, claude-code)..."
-# Using npm from the devcontainer features (Node.js)
-# We use 'sudo env PATH=$PATH' because nvm installs npm in a path not available to the root user's secure_path
-sudo env PATH=$PATH npm install -g @google/gemini-cli @anthropic-ai/claude-code
+echo "🧠 Installing AI Copilot Tools..."
+
+# 2.1 Install Gemini CLI (Official npm method)
+echo "   - Installing @google/gemini-cli..."
+sudo env PATH=$PATH npm install -g @google/gemini-cli
+
+# 2.2 Install Claude Code (Official curl method recommended by Anthropic)
+echo "   - Installing claude-code..."
+curl -fsSL https://claude.ai/install.sh | bash
+
+# 2.3 Install OpenCode (Official curl method)
+echo "   - Installing opencode..."
+curl -fsSL https://opencode.ai/install | bash
+
+# 2.4 Install Oh My OpenAgent (The rebranded oh-my-opencode harness via npm)
+echo "   - Installing oh-my-opencode (oh-my-openagent)..."
+sudo env PATH=$PATH npm install -g oh-my-opencode
 
 echo "-----------------------------------------------------------------"
 echo "✅ Environment Base Layer Installed."
