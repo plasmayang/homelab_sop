@@ -12,9 +12,13 @@ No matter how advanced AI becomes, as humans, we will always have work to do. At
 
 ---
 
-## 🗂️ The P.A.R.A. Architecture
+## 🗂️ Repository Taxonomy: Information Granularity & Dimensions
 
-This repository is strictly organized to maintain flow and separation of concerns:
+To accommodate our philosophy of deep human-AI collaboration, the repository is split into two distinct dimensions of information granularity: **The Human Dimension** (cognitive and lifecycle management) and **The Machine Dimension** (execution and context).
+
+### 1. The Human Dimension (Numbered P.A.R.A. Folders)
+
+This is the high-level cognitive layer. It tracks the lifecycle of your thoughts, knowledge, and active goals.
 
 - **`00-inbox/` 📥**: The raw intake. Transient landing zone for quick captures and unstructured thoughts.
 - **`01-raw/` 🥩**: The immutable source of truth (Karpathy's LLM Wiki concept). A permanent, read-only data lake for original articles, research papers, logs, and unedited notes. The AI compiles structured knowledge from here but NEVER modifies these files.
@@ -24,6 +28,16 @@ This repository is strictly organized to maintain flow and separation of concern
 - **`20-areas/` 🌐**: Ongoing responsibilities. Long-term maintenance domains (e.g., HomeLab architecture, finance, health).
 - **`30-resources/` 📚**: The library. Reusable assets, templates, standard operating procedures (SOPs), and shared scripts.
 - **`40-archives/` 🗄️**: Cold storage. Completed projects, abandoned ideas, and outdated documents.
+
+### 2. The Machine Dimension (Unnumbered Folders)
+
+This is the granular execution and context layer. It contains the scripts, automation pipelines, and infrastructure definitions where the AI (and the DevOps engineer) operates.
+
+- **`.ai/` 🧠**: The AI's context engine. Contains custom system instructions, prompt templates, and specialized agent **skills** (e.g., `.ai/skills/doppler-manager`).
+- **`infrastructure/` ⚙️**: The GitOps engine. Declarative Infrastructure as Code (IaC) and the original Agentic Operations Center (see `infrastructure/README.md`).
+- **`.github/` 🐙**: Automation pipelines and CI/CD workflows.
+
+---
 
 ## 🆚 Architecture Philosophy: AIandI vs. Karpathy's LLM Wiki
 
@@ -40,14 +54,6 @@ The answer is that `AIandI` is a **superset** of the LLM Wiki concept, designed 
 | **AI Instructions** | `CLAUDE.md` | **`.ai/context.md`** & **`.ai/skills/`** (giving AI the "hands" to execute tasks like secret management). |
 
 If `AIandI` were only a Wiki, it would be a passive library. By combining the immutable `01-raw` knowledge ingestion with the actionable P.A.R.A. framework and AI Skills, this repository becomes a full-stack **Operations Center**. The AI reads the raw data, compiles the wiki, *and* helps write the code to deploy the infrastructure.
-
-## 🤖 The AI Nervous System
-
-This workspace is designed to be deeply understood by AI agents.
-
-- **`.ai/`**: The AI's context engine. Contains custom system instructions, prompt templates, and specialized agent **skills** (e.g., `.ai/skills/doppler-manager`).
-- **`infrastructure/`**: The GitOps engine. Declarative Infrastructure as Code (IaC) and the original Agentic Operations Center (see `infrastructure/README.md`).
-- **`.github/`**: Automation pipelines and workflows.
 
 ---
 
