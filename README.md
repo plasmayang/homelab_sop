@@ -20,6 +20,8 @@ To accommodate our philosophy of deep human-AI collaboration, the repository org
 
 This is the high-level cognitive layer. It tracks the lifecycle of your thoughts, knowledge, and active goals—from chaos to clarity.
 
+> **🔒 The Dual-Repo Architecture:** To protect your privacy and ensure that this public "Engine" repository can be shared or open-sourced, all numbered folders (`00` to `40`) are ignored via `.gitignore`. You are expected to initialize a **second, private Git repository** directly within these folders (or at the root, managing only the numbered folders) to securely sync your personal knowledge base.
+
 - **`00-inbox/` 📥**: The raw intake. Transient landing zone for quick captures and unstructured thoughts.
 - **`01-raw/` 🥩**: The immutable source of truth (Karpathy's LLM Wiki concept). A permanent, read-only data lake for original articles, research papers, logs, and unedited notes. The AI compiles structured knowledge from here but NEVER modifies these files.
 - **`02-ideas/` 💡**: The incubator. Brainstorming, project proposals, and concepts being explored with AI.

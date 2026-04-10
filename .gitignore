@@ -1,1 +1,6 @@
 dist/
+
+# Dual-Repo Architecture: Ignore Personal Knowledge Base
+# The numbered P.A.R.A folders are designed to be managed 
+# by a separate, private git repository by the user.
+[0-9][0-9]-*/
