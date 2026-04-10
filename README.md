@@ -4,7 +4,7 @@
 
 Welcome to `AIandI` (AI and I). This repository is a unified workspace designed to be a true "Second Brain" augmented by Artificial Intelligence. It is built on a hybrid architecture combining the **P.A.R.A. Method** (Projects, Areas, Resources, Archives) with **Modern Monorepo** engineering principles.
 
-Here, ideas are captured, knowledge is distilled, code is written, and servers are provisioned—all facilitated by AI Copilots like Gemini.
+Here, ideas are captured, knowledge is distilled, code is written, and servers are provisioned—all facilitated by AI Copilots like opencode, claude code, or gemini-cli.
 
 ---
 
