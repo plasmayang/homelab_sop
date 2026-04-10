@@ -21,6 +21,7 @@ if gh auth status 2>&1 | grep -q "GITHUB_TOKEN"; then
     echo "⚠️  Detected restricted Codespace token. You might not see your private repositories."
     read -p "Do you want to re-authenticate to access ALL your private repos? (y/N): " REAUTH
     if [[ "$REAUTH" =~ ^[Yy]$ ]]; then
+        unset GITHUB_TOKEN
         gh auth login --scopes "repo,workflow"
     fi
 fi
@@ -41,6 +42,7 @@ while [ ! -d "$USERDATA_DIR" ]; do
     if [ ${#REPO_LIST[@]} -eq 0 ]; then
         echo "❌ No repositories found or access denied."
         read -p "Press Enter to try 'gh auth login' or Ctrl+C to abort."
+        unset GITHUB_TOKEN
         gh auth login --scopes "repo,workflow"
         continue
     fi
