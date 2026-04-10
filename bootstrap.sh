@@ -78,21 +78,16 @@ if doppler secrets verify &>/dev/null; then
     echo "✅ Doppler is already authenticated."
 else
     echo "Doppler is not authenticated in this environment."
-    echo "You need a Doppler Service Token (starts with 'dp.st.') to inject secrets."
-    read -s -p "🔑 Enter your Doppler Service Token (or press Enter to skip): " USER_DOPPLER_TOKEN
+    echo "We will authenticate the Doppler CLI using your personal account."
+    echo "This grants the Codespace access to your Doppler projects so AI agents can manage secrets."
     echo ""
-    
-    if [ -n "$USER_DOPPLER_TOKEN" ]; then
-        export DOPPLER_TOKEN=$USER_DOPPLER_TOKEN
-        # Configure doppler to use this token for all future commands in this workspace
-        doppler configure set token "$USER_DOPPLER_TOKEN" --scope /
-        if doppler secrets verify &>/dev/null; then
-            echo "✅ Doppler authentication successful!"
-        else
-            echo "❌ Doppler authentication failed. Check your token."
-        fi
+    # Use doppler login for interactive browser authentication
+    if doppler login; then
+        echo "✅ Doppler authentication successful!"
+        # We can set a default scope to the token-providers for safety, but the agent can override it
+        doppler setup --project keys4_token-providers --config stg --no-interactive || true
     else
-        echo "⏭️  Skipping Doppler authentication. AI Agents will not have access to secrets."
+        echo "⚠️  Doppler authentication skipped or failed. AI Agents may not have access to secrets."
     fi
 fi
 

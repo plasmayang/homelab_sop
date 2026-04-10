@@ -12,8 +12,8 @@ This skill provides a comprehensive workflow for managing Doppler CLI operations
 ## Quick Start
 
 1. **Check Environment**: Run `scripts/check_status.sh`. If missing, follow **Task 0: Environment Provisioning**.
-2. **Setup Auth**: If not authenticated, use `ask_user` to obtain a Service Token (starts with `dp.st.`) and configure it.
-3. **Run App**: Use `doppler run -- <command>` to inject secrets into your process.
+2. **Global Auth**: The Codespace is authenticated globally during the `bootstrap.sh` sequence via `doppler login`.
+3. **Execute**: Use `doppler run -p <project> -c <config> -- <command>` to inject secrets.
 
 ## Core Tasks
 
@@ -25,9 +25,9 @@ If `doppler` CLI is not found:
 - **Dependencies**: Ensure `curl`, `gnupg`, and `apt-transport-https` are installed if on Linux.
 - **Verification**: Run `doppler --version` after installation.
 
-### 1. The 9-Grid Architecture & Just-in-Time Access (JITA)
+### 1. The 9-Grid Architecture & Logical Just-in-Time Access (JITA)
 
-The `AIandI` workspace strictly isolates secrets across 9 domains (blast radii). AI Agents DO NOT have global access. You must use the `ask_user` tool to request temporary elevation for specific projects.
+The `AIandI` workspace strictly isolates secrets across 9 domains (blast radii). Even though the Codespace has global CLI access, **AI Agents MUST NOT access projects other than `keys4_token-providers` without explicit human permission.**
 
 **The 9 Projects:**
 1. `keys4_network-core` (Tailscale, Cloudflare)
@@ -35,26 +35,25 @@ The `AIandI` workspace strictly isolates secrets across 9 domains (blast radii).
 3. `keys4_backup-core` (S3/B2 keys, NAS encryption)
 4. `keys4_private-services` (DB passwords)
 5. `keys4_identity-providers` (OAuth clients, Social/Google/GitHub logins)
-6. `keys4_token-providers` (AI API Keys: OpenAI, Anthropic, Gemini)
+6. `keys4_token-providers` (AI API Keys: OpenAI, Anthropic, Gemini) - *Default AI scope*
 7. `keys4_observability-telemetry` (Grafana, Datadog)
 8. `keys4_notification-channels` (Telegram bots, Webhooks)
 9. `keys4_delivery-pipelines` (Docker Hub, NPM)
 
-**The JITA Workflow:**
-If you need to read or modify a secret in a project you don't currently have a token for:
+**The JITA Workflow (User Consent):**
+If you need to read or modify a secret in ANY project *other* than `keys4_token-providers`:
 1. Identify the target project from the 9-grid list above.
-2. Use the `ask_user` tool (type: `text`) to prompt the user: "I need to access secrets in the `[project_name]` project. Please provide a Doppler Service Token (`dp.st.xxx`) scoped to this project's `stg` or `dev` config."
-3. Once provided, temporarily configure the CLI: `doppler configure set token <NEW_TOKEN> --scope <temp_dir_or_current_dir>`
-4. Execute the required action.
+2. USE THE `ask_user` TOOL (type: `yesno` or `choice`) to explicitly request permission from the human.
+   - Example prompt: "I need to access/modify secrets in the `[project_name]` project to complete this task. Do you authorize this action?"
+3. Only if the user explicitly grants permission, you may proceed to use `doppler secrets` or `doppler run` with the `-p [project_name] -c stg` flags.
 
 ### 2. Secret Management
 
-Manage secrets within a specific project and config using the provided Service Token.
+Manage secrets within a specific project and config using the `--project` (`-p`) and `--config` (`-c`) flags.
 
-- **List Secrets**: `doppler secrets`
-- **Add/Update Secret**: `doppler secrets set KEY=VALUE`
-- **Delete Secret**: `doppler secrets delete KEY`
-- **Download Secrets (as .env)**: `doppler secrets download --format env --no-file > .env` (Avoid saving to disk if possible; prefer `doppler run`).
+- **List Secrets**: `doppler secrets -p <project> -c <config>`
+- **Add/Update Secret**: `doppler secrets set KEY=VALUE -p <project> -c <config>`
+- **Delete Secret**: `doppler secrets delete KEY -p <project> -c <config>`
 
 ### 3. Secure Execution
 
