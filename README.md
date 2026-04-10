@@ -6,6 +6,16 @@ Welcome to `AIandI` (AI and I). This repository is a unified workspace designed 
 
 Here, ideas are captured, knowledge is distilled, code is written, and servers are provisioned—all facilitated by AI Copilots like opencode, claude code, or gemini-cli.
 
+## 🚀 Quickstart: The "Ignition" Sequence
+
+This repository is optimized for **GitHub Codespaces**. To get started instantly:
+1. Click **Code** -> **Codespaces** -> **New codespace**.
+2. The environment will automatically install all necessary tools (GitHub CLI, Doppler, AI Copilots).
+3. Once the terminal opens, run the single ignition script to authenticate your private data and secrets:
+   ```bash
+   ./bootstrap.sh
+   ```
+
 ## 🧑‍💻 The Core Philosophy: AI and I
 
 No matter how advanced AI becomes, as humans, we will always have work to do. At specific levels of information granularity and dimensions of personal interest, we will always need to engage and collaborate deeply with AI, rather than blindly handing everything over for it to manage. **This project is designed to be the custom-tailored workspace for that exact need**—a place where human intent and AI execution meet seamlessly.

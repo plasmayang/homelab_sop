@@ -2,7 +2,10 @@
     "name": "AIandI Operations Center",
     "image": "mcr.microsoft.com/devcontainers/base:debian",
     "features": {
-        "ghcr.io/devcontainers/features/github-cli:1": {}
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "lts"
+        }
     },
     // Request permission to access ALL the user's repositories upon Codespace creation.
     // This allows seamless cloning of the private userdata repo.
